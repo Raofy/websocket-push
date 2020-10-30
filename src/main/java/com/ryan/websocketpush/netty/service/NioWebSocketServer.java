@@ -8,6 +8,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -15,13 +16,10 @@ import org.springframework.stereotype.Component;
 public class NioWebSocketServer {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    private final static Integer webSocketPort = 8088;
-
     @Autowired
     private NioWebSocketChannelInitializer channelInitializer;
 
-    @Bean
-    public void init() {
+    public void init(Integer webSocketPort) {
         logger.info("正在启动websocket服务器");
         NioEventLoopGroup boss = new NioEventLoopGroup();
         NioEventLoopGroup work = new NioEventLoopGroup();
@@ -32,6 +30,7 @@ public class NioWebSocketServer {
             bootstrap.childHandler(channelInitializer);
             Channel channel = bootstrap.bind(webSocketPort).sync().channel();
             logger.info("webSocket服务器启动成功：" + channel);
+            logger.info("webSocket端口号：" + webSocketPort);
             channel.closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -43,7 +42,4 @@ public class NioWebSocketServer {
         }
     }
 
-//    public static void main(String[] args) {
-//        new NioWebSocketServer().init(8088);
-//    }
 }

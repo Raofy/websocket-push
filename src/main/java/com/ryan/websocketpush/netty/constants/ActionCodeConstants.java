@@ -7,10 +7,13 @@ package com.ryan.websocketpush.netty.constants;
 public interface ActionCodeConstants {
 
     /**
-     * 平台获取点击事件信息
+     * 广播消息
      */
-    int PLATFORM_MSG = 1024;
+    int PUSH_MSG = 1024;
 
-
+    /**
+     * 指定用户消息
+     */
+    int SPECIAL_MSG = 1025;
 
 }

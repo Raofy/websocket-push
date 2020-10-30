@@ -1,24 +1,23 @@
 package com.ryan.websocketpush.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ryan.websocketpush.annotation.ActionCode;
 import com.ryan.websocketpush.annotation.SocketResponseBody;
 import com.ryan.websocketpush.netty.constants.ActionCodeConstants;
+import com.ryan.websocketpush.netty.global.ChannelSupervise;
 import com.ryan.websocketpush.netty.interf.IActionSocketService;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * @author Airey
- * @date 2019/12/27 15:27
- * ----------------------------------------------
- * TODO
- * ----------------------------------------------
+ * 广播消息
+ *
  */
 @Service
 @Slf4j
-@ActionCode(ActionCodeConstants.PLATFORM_MSG)
-public class PlatFormMsgSeviceImpl implements IActionSocketService {
+@ActionCode(ActionCodeConstants.PUSH_MSG)
+public class BroadcastMsgSeviceImpl implements IActionSocketService {
 
 
     @SocketResponseBody
@@ -30,7 +29,8 @@ public class PlatFormMsgSeviceImpl implements IActionSocketService {
          *
          */
         log.info("收到终端请求 === " + message);
-
-        return "服务器端消息";
+        ChannelSupervise.removeChannelByActionCode(context.channel());
+        ChannelSupervise.addChannel(context.channel());
+        return "服务器广播消息";
     }
 }
