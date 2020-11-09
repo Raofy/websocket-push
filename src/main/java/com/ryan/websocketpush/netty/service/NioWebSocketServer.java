@@ -19,7 +19,11 @@ public class NioWebSocketServer {
     @Autowired
     private NioWebSocketChannelInitializer channelInitializer;
 
-    public void init(Integer webSocketPort) {
+    @Value("${webSokcet.port}")
+    private Integer webSocketPort;
+
+    @Bean
+    public void init() {
         logger.info("正在启动websocket服务器");
         NioEventLoopGroup boss = new NioEventLoopGroup();
         NioEventLoopGroup work = new NioEventLoopGroup();

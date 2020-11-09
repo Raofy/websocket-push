@@ -7,7 +7,7 @@ package com.ryan.websocketpush.netty.constants;
 public interface ActionCodeConstants {
 
     /**
-     * 广播消息
+     * 其他类型消息
      */
     int PUSH_MSG = 1024;
 

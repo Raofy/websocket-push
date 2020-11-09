@@ -19,6 +19,7 @@ public class BaseSocketRequest {
 
     /**
      * 获取对应请求的bean
+     *
      * @param json
      * @return 对应的bean
      */

@@ -26,7 +26,7 @@ public class NettyServerThread implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         log.warn("websocket服务器准备启动！ 端口为 :  " + webSocketPort);
-        nettyServer.init(webSocketPort);
+        //nettyServer.init(webSocketPort);
 
     }
 }

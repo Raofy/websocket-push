@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 @ActionCode(ActionCodeConstants.PUSH_MSG)
-public class BroadcastMsgSeviceImpl implements IActionSocketService {
+public class OtherMsgServiceImpl implements IActionSocketService {
 
 
     @SocketResponseBody

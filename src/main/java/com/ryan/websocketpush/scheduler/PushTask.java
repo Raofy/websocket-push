@@ -3,7 +3,6 @@ package com.ryan.websocketpush.scheduler;
 import com.ryan.websocketpush.netty.constants.ActionCodeConstants;
 import com.ryan.websocketpush.netty.global.ChannelSupervise;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
